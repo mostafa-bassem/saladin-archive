@@ -1,0 +1,18 @@
+theme: jekyll-theme-primer
+title: Saladin Archive
+description: Archive and collection
+
+# Build settings
+source: .
+destination: _site
+plugins:
+  - jekyll-seo-tag
+  - jekyll-github-metadata
+  
+# Exclude files from build
+exclude:
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
