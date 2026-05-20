@@ -1,8 +1,1377 @@
----
-layout: default
-title: Saladin Archive
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-# Welcome to Saladin Archive
+<title>THE IMPERIAL SALADIN ARCHIVES</title>
 
-This is the homepage of the Saladin Archive collection.
+<!-- LOGO -->
+<link rel="icon" type="image/png" href="photo/logo.png">
+<link rel="shortcut icon" type="image/png" href="photo/logo.png">
+<link rel="apple-touch-icon" href="photo/logo.png">
+
+<!-- SOCIAL -->
+<meta property="og:image" content="photo/logo.png">
+<meta property="og:title" content="THE IMPERIAL SALADIN ARCHIVES">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --gold:#d4a24c;
+  --dark:#050505;
+  --stone:#181818;
+  --soft:#d7d0c2;
+  --blood:#772222;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#050505;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+  width:10px;
+}
+
+::-webkit-scrollbar-track{
+  background:#050505;
+}
+
+::-webkit-scrollbar-thumb{
+  background:var(--gold);
+  border-radius:20px;
+}
+
+/* FONTS */
+
+.cinzel{
+  font-family:'Cinzel',serif;
+}
+
+.amiri{
+  font-family:'Amiri',serif;
+}
+
+/* LOADER */
+
+#loader{
+  position:fixed;
+  inset:0;
+  background:#050505;
+  z-index:999999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  transition:1s;
+}
+
+.loader-logo{
+  width:140px;
+  animation:floatLogo 3s ease-in-out infinite;
+  filter:drop-shadow(0 0 25px rgba(212,162,76,.5));
+}
+
+.loader-title{
+  margin-top:30px;
+  letter-spacing:6px;
+  color:var(--gold);
+  font-family:'Cinzel',serif;
+}
+
+@keyframes floatLogo{
+  0%{transform:translateY(0px);}
+  50%{transform:translateY(-10px);}
+  100%{transform:translateY(0px);}
+}
+
+/* NAV */
+
+.nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:999;
+  backdrop-filter:blur(20px);
+  background:rgba(0,0,0,.5);
+  border-bottom:1px solid rgba(212,162,76,.2);
+  transition:.4s;
+}
+
+.nav-inner{
+  width:90%;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 0;
+}
+
+.nav-links{
+  display:flex;
+  gap:25px;
+  list-style:none;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#ddd;
+  font-size:13px;
+  letter-spacing:2px;
+  transition:.4s;
+  text-transform:uppercase;
+}
+
+.nav-links a:hover{
+  color:var(--gold);
+}
+
+.nav-logo{
+  width:50px;
+  height:50px;
+  object-fit:contain;
+  border-radius:50%;
+  transition:.5s;
+}
+
+.nav-logo:hover{
+  transform:scale(1.1) rotate(6deg);
+  filter:drop-shadow(0 0 20px rgba(212,162,76,.8));
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  background:
+  linear-gradient(to bottom,rgba(0,0,0,.82),rgba(0,0,0,.85)),
+  url('https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2000&auto=format&fit=crop');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.overlay-grid{
+  position:absolute;
+  inset:0;
+  background-image:
+  linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size:50px 50px;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center, rgba(212,162,76,.08), transparent 60%);
+}
+
+.hero-logo{
+  width:180px;
+  margin:auto;
+  margin-bottom:30px;
+  animation:glowLogo 4s ease-in-out infinite;
+  filter:drop-shadow(0 0 30px rgba(212,162,76,.5));
+}
+
+@keyframes glowLogo{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.05);}
+  100%{transform:scale(1);}
+}
+
+.hero-title{
+  font-size:clamp(4rem,10vw,9rem);
+  letter-spacing:10px;
+  line-height:1;
+  margin-bottom:20px;
+  text-shadow:0 0 40px rgba(212,162,76,.3);
+  transition:transform .2s;
+}
+
+.hero-sub{
+  max-width:900px;
+  margin:auto;
+  line-height:2;
+  color:#ddd;
+  font-size:1.08rem;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:40px;
+  padding:18px 40px;
+  border:1px solid rgba(212,162,76,.5);
+  color:white;
+  text-decoration:none;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  overflow:hidden;
+  position:relative;
+  transition:.4s;
+}
+
+.btn::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  transform:translateX(-100%);
+  background:linear-gradient(90deg,transparent,rgba(212,162,76,.25),transparent);
+  transition:.6s;
+}
+
+.btn:hover::before{
+  transform:translateX(100%);
+}
+
+.btn:hover{
+  background:rgba(212,162,76,.1);
+  transform:translateY(-4px);
+}
+
+/* CHAPTERS */
+
+.chapter{
+  min-height:100vh;
+  padding:120px 10%;
+  position:relative;
+  overflow:hidden;
+}
+
+.chapter::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.75);
+}
+
+.chapter-content{
+  position:relative;
+  z-index:2;
+}
+
+.chapter-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.chapter-title{
+  font-size:clamp(2rem,4vw,4rem);
+  margin-bottom:30px;
+  line-height:1.2;
+}
+
+.chapter-text{
+  line-height:2;
+  color:#ddd;
+  margin-bottom:25px;
+}
+
+.chapter-number{
+  position:absolute;
+  right:60px;
+  top:40px;
+  font-size:7rem;
+  opacity:.1;
+  color:var(--gold);
+  font-weight:900;
+}
+
+/* BACKGROUNDS */
+
+.chapter-bg-1{
+  background:url('https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=2000&auto=format&fit=crop') center/cover fixed;
+}
+
+.chapter-bg-2{
+  background:url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=2000&auto=format&fit=crop') center/cover fixed;
+}
+
+.chapter-bg-3{
+  background:url('https://images.unsplash.com/photo-1539768942893-daf53e448371?q=80&w=2000&auto=format&fit=crop') center/cover fixed;
+}
+
+.chapter-bg-4{
+  background:url('https://images.unsplash.com/photo-1572252009286-268acec5ca0a?q=80&w=2000&auto=format&fit=crop') center/cover fixed;
+}
+
+.chapter-bg-5{
+  background:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2000&auto=format&fit=crop') center/cover fixed;
+}
+
+/* GLASS */
+
+.glass{
+  background:rgba(0,0,0,.5);
+  border:1px solid rgba(212,162,76,.2);
+  backdrop-filter:blur(15px);
+  box-shadow:0 0 30px rgba(0,0,0,.4);
+}
+
+.info-card{
+  padding:40px;
+  transition:.5s;
+  position:relative;
+  overflow:hidden;
+}
+
+.info-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+
+.info-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 40px rgba(212,162,76,.15);
+}
+
+/* GOLD */
+
+.gold{
+  color:var(--gold);
+}
+
+/* STATS */
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:30px;
+  margin-top:70px;
+}
+
+.stat-box{
+  text-align:center;
+  padding:40px 20px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.07);
+  transition:.4s;
+}
+
+.stat-box:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 30px rgba(212,162,76,.15);
+}
+
+.stat-box h3{
+  font-size:3rem;
+  color:var(--gold);
+}
+
+/* TIMELINE */
+
+.timeline{
+  position:relative;
+  margin-top:120px;
+  padding-left:40px;
+}
+
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:10px;
+  top:0;
+  width:2px;
+  height:100%;
+  background:linear-gradient(to bottom,var(--gold),transparent);
+}
+
+.timeline-item{
+  margin-bottom:70px;
+  position:relative;
+}
+
+.timeline-item::before{
+  content:'';
+  position:absolute;
+  left:-38px;
+  top:8px;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 20px var(--gold);
+}
+
+/* LOCATIONS */
+
+.location-card{
+  transition:.5s;
+}
+
+.location-card:hover{
+  transform:translateY(-10px) scale(1.02);
+}
+
+/* QUOTE */
+
+.quote-section{
+  padding:150px 10%;
+  text-align:center;
+  background:#070707;
+  position:relative;
+}
+
+.quote{
+  font-size:clamp(2rem,5vw,5rem);
+  line-height:1.4;
+  max-width:1200px;
+  margin:auto;
+}
+
+/* FOOTER */
+
+.footer{
+  padding:80px 10%;
+  background:black;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+/* FADE */
+
+.fade-up{
+  opacity:0;
+  transform:translateY(50px);
+  transition:1s;
+}
+
+.fade-up.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* PARTICLES */
+
+.particles{
+  position:absolute;
+  inset:0;
+}
+
+.particles span{
+  position:absolute;
+  width:4px;
+  height:4px;
+  background:rgba(212,162,76,.4);
+  border-radius:50%;
+  animation:particleMove linear infinite;
+}
+
+@keyframes particleMove{
+  from{
+    transform:translateY(100vh);
+    opacity:0;
+  }
+  20%{
+    opacity:1;
+  }
+  to{
+    transform:translateY(-100vh);
+    opacity:0;
+  }
+}
+
+/* AUDIO BUTTON */
+
+.audio-btn{
+  position:fixed;
+  right:25px;
+  bottom:25px;
+  z-index:99999;
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  border:none;
+  background:rgba(212,162,76,.15);
+  color:var(--gold);
+  font-size:24px;
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+  transition:.4s;
+}
+
+.audio-btn:hover{
+  transform:scale(1.1) rotate(8deg);
+  box-shadow:0 0 30px rgba(212,162,76,.3);
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+  .chapter-grid{
+    grid-template-columns:1fr;
+  }
+
+  .stats-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+}
+
+@media(max-width:700px){
+
+  .stats-grid{
+    grid-template-columns:1fr;
+  }
+
+  .chapter{
+    padding:100px 7%;
+  }
+
+  .hero-logo{
+    width:120px;
+  }
+
+  .hero-title{
+    letter-spacing:4px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+
+<div id="loader">
+  <img src="photo/logo.png" class="loader-logo">
+  <div class="loader-title">
+    IMPERIAL SALADIN ARCHIVES
+  </div>
+</div>
+
+<!-- NAV -->
+
+<nav class="nav">
+
+<div class="nav-inner">
+
+<div class="flex items-center gap-4">
+
+<img src="photo/logo.png" class="nav-logo">
+
+<h1 class="cinzel gold text-2xl">
+SALADIN ARCHIVE
+</h1>
+
+</div>
+
+<ul class="nav-links">
+<li><a href="#origin">Origins</a></li>
+<li><a href="#egypt">Egypt</a></li>
+<li><a href="#hattin">Hattin</a></li>
+<li><a href="#jerusalem">Jerusalem</a></li>
+<li><a href="#citadel">Citadel</a></li>
+<li><a href="#timeline">Timeline</a></li>
+<li><a href="#locations">Locations</a></li>
+</ul>
+
+<button id="translateBtn" class="px-5 py-2 border border-yellow-700/40 hover:bg-yellow-700/20 transition-all">
+العربية
+</button>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="overlay-grid"></div>
+
+<div class="particles"></div>
+
+<div class="relative z-10 w-[90%] max-w-[1500px]">
+
+<img src="photo/logo.png" class="hero-logo">
+
+<p class="uppercase tracking-[10px] text-sm text-yellow-600 mb-6">
+The Imperial Historical Reconstruction
+</p>
+
+<h1 class="hero-title cinzel">
+SALADIN
+</h1>
+
+<h2 class="text-3xl md:text-5xl font-light mb-8 text-neutral-300">
+The Sultan Who Reshaped The Middle East
+</h2>
+
+<p class="hero-sub">
+This cinematic historical archive follows the extraordinary rise of Salah ad-Din Yusuf ibn Ayyub — the legendary Kurdish Muslim ruler who united Egypt and Syria, defeated the Crusader Kingdoms at Hattin, reclaimed Jerusalem in 1187, and transformed medieval warfare, diplomacy, architecture, and political power across the Islamic world.
+</p>
+
+<a href="#origin" class="btn">
+Enter The Archive
+</a>
+
+<div class="stats-grid">
+
+<div class="stat-box glass">
+<h3>1137</h3>
+<p>Birth Year</p>
+</div>
+
+<div class="stat-box glass">
+<h3>1187</h3>
+<p>Jerusalem Liberated</p>
+</div>
+
+<div class="stat-box glass">
+<h3>1193</h3>
+<p>Death in Damascus</p>
+</div>
+
+<div class="stat-box glass">
+<h3>800+</h3>
+<p>Years of Legacy</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ORIGIN -->
+
+<section class="chapter chapter-bg-1" id="origin">
+
+<div class="chapter-number">01</div>
+
+<div class="chapter-content">
+
+<div class="chapter-grid">
+
+<div class="fade-up">
+
+<h2 class="chapter-title cinzel">
+Origins Of The Sultan
+</h2>
+
+<p class="chapter-text">
+Salah ad-Din Yusuf ibn Ayyub was born in Tikrit in 1137 into a Kurdish military family whose destiny would soon become intertwined with the fate of the Islamic world.
+</p>
+
+<p class="chapter-text">
+Damascus transformed him into both a warrior and a statesman surrounded by scholarship, theology, military science, and political philosophy.
+</p>
+
+<p class="chapter-text">
+Historians later wrote that his greatest strength was not merely battlefield power, but patience, discipline, restraint, and unity.
+</p>
+
+</div>
+
+<div class="fade-up">
+
+<div class="info-card glass">
+
+<h3 class="text-4xl cinzel gold mb-8">
+Historical Archive
+</h3>
+
+<p class="chapter-text">
+Saladin became famous for strategy, diplomacy, leadership, and military brilliance.
+</p>
+
+<p class="chapter-text">
+Unlike many rulers of his era, he invested heavily in hospitals, fortifications, infrastructure, and scholarship.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- EGYPT -->
+
+<section class="chapter chapter-bg-2" id="egypt">
+
+<div class="chapter-number">02</div>
+
+<div class="chapter-content">
+
+<div class="chapter-grid">
+
+<div class="fade-up">
+
+<div class="info-card glass">
+
+<h3 class="text-4xl cinzel gold mb-8">
+The Nile Campaign
+</h3>
+
+<p class="chapter-text">
+Egypt became the center of geopolitical struggle between Crusader forces and Syrian rulers.
+</p>
+
+<p class="chapter-text">
+After Shirkuh's death, Saladin reorganized Egypt's economy, military, and administration.
+</p>
+
+</div>
+
+</div>
+
+<div class="fade-up">
+
+<h2 class="chapter-title cinzel">
+Egypt & The Rise Of A New Empire
+</h2>
+
+<p class="chapter-text">
+In 1171 Saladin abolished the Fatimid Caliphate and restored Egypt to Sunni Abbasid allegiance.
+</p>
+
+<p class="chapter-text">
+This transformed Egypt and Syria into one of the most powerful military states of the medieval Middle East.
+</p>
+
+<p class="chapter-text">
+The eastern Mediterranean balance of power changed forever.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- HATTIN -->
+
+<section class="chapter chapter-bg-3" id="hattin">
+
+<div class="chapter-number">03</div>
+
+<div class="chapter-content">
+
+<div class="chapter-grid">
+
+<div class="fade-up">
+
+<h2 class="chapter-title cinzel">
+The Battle Of Hattin
+</h2>
+
+<p class="chapter-text">
+In July 1187 Saladin launched one of history's most devastating strategic operations.
+</p>
+
+<p class="chapter-text">
+He forced Crusader armies into the scorching heat away from water sources and surrounded them near Hattin.
+</p>
+
+<p class="chapter-text">
+The Crusader field army collapsed completely.
+</p>
+
+</div>
+
+<div class="fade-up">
+
+<div class="info-card glass">
+
+<h3 class="text-4xl cinzel gold mb-8">
+Military Analysis
+</h3>
+
+<p class="chapter-text">
+Saladin weaponized geography, thirst, heat, fatigue, mobility, and morale.
+</p>
+
+<p class="chapter-text">
+Modern military historians still study Hattin as a masterpiece of operational warfare.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- QUOTE -->
+
+<section class="quote-section">
+
+<h2 class="quote cinzel fade-up">
+“Jerusalem Was Not Simply Conquered.
+It Was Reclaimed With Discipline,
+Strategy,
+And Mercy.”
+</h2>
+
+</section>
+
+<!-- JERUSALEM -->
+
+<section class="chapter chapter-bg-4" id="jerusalem">
+
+<div class="chapter-number">04</div>
+
+<div class="chapter-content">
+
+<div class="chapter-grid">
+
+<div class="fade-up">
+
+<div class="info-card glass">
+
+<h3 class="text-4xl cinzel gold mb-8">
+The Liberation
+</h3>
+
+<p class="chapter-text">
+After Hattin, Jerusalem surrendered in 1187 after negotiations with Balian of Ibelin.
+</p>
+
+<p class="chapter-text">
+Unlike the massacres during the First Crusade, Saladin forbade mass killings.
+</p>
+
+</div>
+
+</div>
+
+<div class="fade-up">
+
+<h2 class="chapter-title cinzel">
+Jerusalem Returns To Islamic Rule
+</h2>
+
+<p class="chapter-text">
+Christian holy sites were protected and pilgrims were allowed access.
+</p>
+
+<p class="chapter-text">
+European chroniclers described Saladin as honorable, noble, and restrained.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CITADEL -->
+
+<section class="chapter chapter-bg-5" id="citadel">
+
+<div class="chapter-number">05</div>
+
+<div class="chapter-content">
+
+<div class="chapter-grid">
+
+<div class="fade-up">
+
+<h2 class="chapter-title cinzel">
+The Citadel Of Cairo
+</h2>
+
+<p class="chapter-text">
+Construction began in 1176 on the Mokattam Hills to protect Cairo from invasion and instability.
+</p>
+
+<p class="chapter-text">
+The Citadel became one of the greatest surviving medieval military complexes in the Islamic world.
+</p>
+
+</div>
+
+<div class="fade-up">
+
+<div class="info-card glass">
+
+<h3 class="text-4xl cinzel gold mb-8">
+Architectural Legacy
+</h3>
+
+<p class="chapter-text">
+The Citadel served as Egypt's center of government for centuries.
+</p>
+
+<p class="chapter-text">
+Ayyubid, Mamluk, Ottoman, and Muhammad Ali dynasties expanded the fortress through time.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TIMELINE -->
+
+<section class="chapter" id="timeline" style="background:#050505;min-height:auto;">
+
+<div class="chapter-content">
+
+<h2 class="chapter-title cinzel text-center fade-up">
+Chronological Timeline
+</h2>
+
+<div class="timeline">
+
+<div class="timeline-item fade-up">
+<h3 class="text-3xl gold cinzel mb-4">
+1137 — Birth In Tikrit
+</h3>
+<p class="chapter-text">
+Saladin is born into a Kurdish military family.
+</p>
+</div>
+
+<div class="timeline-item fade-up">
+<h3 class="text-3xl gold cinzel mb-4">
+1169 — Vizier Of Egypt
+</h3>
+<p class="chapter-text">
+Saladin becomes Vizier after the death of Shirkuh.
+</p>
+</div>
+
+<div class="timeline-item fade-up">
+<h3 class="text-3xl gold cinzel mb-4">
+1171 — Fatimid Caliphate Ends
+</h3>
+<p class="chapter-text">
+Egypt returns to Sunni Abbasid allegiance.
+</p>
+</div>
+
+<div class="timeline-item fade-up">
+<h3 class="text-3xl gold cinzel mb-4">
+1176 — Citadel Construction
+</h3>
+<p class="chapter-text">
+Construction begins on the Citadel of Cairo.
+</p>
+</div>
+
+<div class="timeline-item fade-up">
+<h3 class="text-3xl gold cinzel mb-4">
+1187 — Battle Of Hattin
+</h3>
+<p class="chapter-text">
+Crusader armies are decisively defeated.
+</p>
+</div>
+
+<div class="timeline-item fade-up">
+<h3 class="text-3xl gold cinzel mb-4">
+1187 — Jerusalem Reclaimed
+</h3>
+<p class="chapter-text">
+Jerusalem returns to Islamic rule.
+</p>
+</div>
+
+<div class="timeline-item fade-up">
+<h3 class="text-3xl gold cinzel mb-4">
+1193 — Death In Damascus
+</h3>
+<p class="chapter-text">
+Saladin dies after giving much of his wealth away.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- LOCATIONS -->
+
+<section id="locations" class="chapter" style="background:#080808;min-height:auto;">
+
+<div class="chapter-content">
+
+<h2 class="chapter-title cinzel text-center mb-10 fade-up">
+Important Historical Locations
+</h2>
+
+<div class="max-w-3xl mx-auto mb-16 fade-up">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search locations like Cairo, Jerusalem, Damascus..."
+class="w-full px-6 py-5 bg-black/60 border border-yellow-700/40 text-white outline-none text-lg tracking-wide"
+/>
+
+</div>
+
+<div id="locationsGrid" class="grid md:grid-cols-2 xl:grid-cols-3 gap-10">
+
+<div class="location-card info-card glass fade-up" data-name="Jerusalem Palestine Al Quds">
+<h3 class="text-3xl cinzel gold mb-5">
+Jerusalem
+</h3>
+<p class="chapter-text">
+Jerusalem became the symbolic center of Saladin's military and spiritual campaign.
+</p>
+</div>
+
+<div class="location-card info-card glass fade-up" data-name="Cairo Egypt Citadel">
+<h3 class="text-3xl cinzel gold mb-5">
+Cairo
+</h3>
+<p class="chapter-text">
+Cairo served as the political heart of Saladin's empire.
+</p>
+</div>
+
+<div class="location-card info-card glass fade-up" data-name="Damascus Syria">
+<h3 class="text-3xl cinzel gold mb-5">
+Damascus
+</h3>
+<p class="chapter-text">
+Damascus shaped Saladin's education and philosophy.
+</p>
+</div>
+
+<div class="location-card info-card glass fade-up" data-name="Tikrit Iraq">
+<h3 class="text-3xl cinzel gold mb-5">
+Tikrit
+</h3>
+<p class="chapter-text">
+The birthplace of Saladin located in modern Iraq.
+</p>
+</div>
+
+<div class="location-card info-card glass fade-up" data-name="Hattin Tiberias Battle">
+<h3 class="text-3xl cinzel gold mb-5">
+Hattin
+</h3>
+<p class="chapter-text">
+Site of Saladin's greatest battlefield victory.
+</p>
+</div>
+
+<div class="location-card info-card glass fade-up" data-name="Alexandria Egypt">
+<h3 class="text-3xl cinzel gold mb-5">
+Alexandria
+</h3>
+<p class="chapter-text">
+A strategic Mediterranean port connected to Saladin's empire.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<div class="grid md:grid-cols-3 gap-12">
+
+<div>
+
+<h2 class="cinzel gold text-3xl mb-6">
+The Imperial Saladin Archives
+</h2>
+
+<p class="chapter-text">
+A cinematic historical experience inspired by medieval Islamic history, Cairo architecture, Crusader warfare, and the legacy of Salah ad-Din.
+</p>
+
+</div>
+
+<div>
+
+<h3 class="cinzel text-2xl mb-6">
+Historical Themes
+</h3>
+
+<ul class="space-y-4 text-neutral-300">
+<li>• Medieval Warfare</li>
+<li>• Islamic Architecture</li>
+<li>• Crusader History</li>
+<li>• Ayyubid Dynasty</li>
+<li>• Mamluk Cairo</li>
+</ul>
+
+</div>
+
+<div>
+
+<h3 class="cinzel text-2xl mb-6">
+Visual Features
+</h3>
+
+<ul class="space-y-4 text-neutral-300">
+<li>• Cinematic Backgrounds</li>
+<li>• Scroll Animations</li>
+<li>• Glassmorphism Design</li>
+<li>• Responsive Layout</li>
+<li>• Dynamic Timeline</li>
+</ul>
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- MUSIC -->
+
+<audio id="bgMusic" loop>
+<source src="music/theme.mp3" type="audio/mp3">
+</audio>
+
+<button class="audio-btn" id="musicBtn">
+🔊
+</button>
+
+<!-- SCRIPT -->
+
+<script>
+
+/* LOADER */
+
+window.addEventListener('load',()=>{
+
+setTimeout(()=>{
+
+const loader=document.getElementById('loader');
+
+loader.style.opacity='0';
+
+setTimeout(()=>{
+loader.style.display='none';
+},1000);
+
+},2000);
+
+});
+
+/* PARTICLES */
+
+const particles=document.querySelector('.particles');
+
+for(let i=0;i<60;i++){
+
+const star=document.createElement('span');
+
+star.style.left=Math.random()*100+'%';
+star.style.animationDuration=(10+Math.random()*20)+'s';
+star.style.opacity=Math.random();
+
+particles.appendChild(star);
+
+}
+
+/* FADE ANIMATION */
+
+const observer=new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+entry.target.classList.add('active');
+}
+
+});
+
+},{
+threshold:.2
+});
+
+document.querySelectorAll('.fade-up').forEach(el=>{
+observer.observe(el);
+});
+
+/* NAV SCROLL */
+
+window.addEventListener('scroll',()=>{
+
+const nav=document.querySelector('.nav');
+
+if(window.scrollY>50){
+nav.style.background='rgba(0,0,0,.88)';
+}else{
+nav.style.background='rgba(0,0,0,.5)';
+}
+
+});
+
+/* HERO PARALLAX */
+
+const title=document.querySelector('.hero-title');
+
+window.addEventListener('mousemove',(e)=>{
+
+const x=(window.innerWidth/2-e.pageX)/50;
+const y=(window.innerHeight/2-e.pageY)/50;
+
+title.style.transform=`translate(${x}px,${y}px)`;
+
+});
+
+/* SEARCH */
+
+const searchInput=document.getElementById('searchInput');
+
+const locationCards=document.querySelectorAll('.location-card');
+
+searchInput.addEventListener('keyup',()=>{
+
+const value=searchInput.value.toLowerCase();
+
+locationCards.forEach(card=>{
+
+const name=card.dataset.name.toLowerCase();
+
+if(name.includes(value)){
+card.style.display='block';
+}else{
+card.style.display='none';
+}
+
+});
+
+});
+
+/* MUSIC */
+
+const music=document.getElementById('bgMusic');
+
+const musicBtn=document.getElementById('musicBtn');
+
+let playing=false;
+
+musicBtn.addEventListener('click',()=>{
+
+if(!playing){
+
+music.play();
+
+musicBtn.innerHTML='🔊';
+
+playing=true;
+
+}else{
+
+music.pause();
+
+musicBtn.innerHTML='🔇';
+
+playing=false;
+
+}
+
+});
+
+/* TRANSLATE */
+
+let currentLanguage='en';
+
+const translateBtn=document.getElementById('translateBtn');
+
+translateBtn.addEventListener('click',()=>{
+
+if(currentLanguage==='en'){
+
+currentLanguage='ar';
+
+document.body.style.direction='rtl';
+document.body.style.fontFamily='Amiri, serif';
+
+document.querySelector('.hero-title').innerText='صلاح الدين';
+
+document.querySelector('.hero h2').innerText='السلطان الذي أعاد تشكيل الشرق الأوسط';
+
+translateBtn.innerText='English';
+
+document.getElementById('searchInput').placeholder='ابحث عن القاهرة أو القدس أو دمشق...';
+
+}else{
+
+currentLanguage='en';
+
+document.body.style.direction='ltr';
+document.body.style.fontFamily='Inter, sans-serif';
+
+document.querySelector('.hero-title').innerText='SALADIN';
+
+document.querySelector('.hero h2').innerText='The Sultan Who Reshaped The Middle East';
+
+translateBtn.innerText='العربية';
+
+document.getElementById('searchInput').placeholder='Search locations like Cairo, Jerusalem, Damascus...';
+
+}
+
+});
+
+console.log('THE IMPERIAL SALADIN ARCHIVE INITIALIZED');
+
+</script>
+
+</body>
+</html>
