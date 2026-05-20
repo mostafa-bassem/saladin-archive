@@ -3,7 +3,6 @@ title: Saladin Archive
 description: Archive and collection
 
 # Build settings
-source: docs
 destination: _site
 plugins:
   - jekyll-seo-tag
